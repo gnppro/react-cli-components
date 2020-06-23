@@ -1,0 +1,15 @@
+{
+  "name": "react-cli-components",
+  "version": "1.0.0",
+  "description": "React CLI Components with Plop.js",
+  "main": "index.js",
+  "repository": "git@github.com:gnppro/react-cli-components.git",
+  "author": "Gerardo Nava Pereda <gerardo.nava.pereda@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "plop": "^2.7.1"
+  },
+  "scripts": {
+    "generate": "plop"
+  }
+}
