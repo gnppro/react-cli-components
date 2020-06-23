@@ -1,0 +1,24 @@
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+const {{pascalCase name}} = (props) => {
+  const [state, setState] = useState('initialState')
+  const {} = props;
+
+  return (
+    <div className="{{pascalCase name}}">
+      {{pascalCase name}}
+    </div>
+  );
+};
+
+const mapStateToProps = (state, ownProps) => ({
+
+});
+
+const mapDispatchToProps = (dispatch) => (bindActionCreators({
+
+}, dispatch));
+
+export default connect(mapStateToProps, mapDispatchToProps)({{pascalCase name}});

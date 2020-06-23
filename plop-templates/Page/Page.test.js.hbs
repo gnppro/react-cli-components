@@ -1,0 +1,23 @@
+import React from 'react';
+import { shallow } from 'enzyme';
+import renderer from 'react-test-renderer';
+import {{pascalCase name}} from './{{pascalCase name}}';
+
+// (1) Snapshot testing
+it('Should render correctly', () => {
+  const component = renderer.create(<{{pascalCase name}} />);
+  const tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
+
+// (2) Checking DOM element
+it('Should have single div', () => {
+  const component = shallow(<{{pascalCase name}} />);
+  expect(component.find('div').length).toBe(1);
+});
+
+// (3) Checking class
+it('Should have the correct class name', ()=> {
+  const component = shallow(<{{pascalCase name}} className="{{pascalCase name}}"/>);
+  expect(component.find('div').hasClass('{{pascalCase name}}')).toBe(true);
+});

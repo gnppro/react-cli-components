@@ -1,0 +1,35 @@
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+const initialState = {
+  error: '',
+  loading: true,
+  results: {}
+}
+
+const {{pascalCase name}} = (props) => {
+  const [state, setState] = useState(initialState)
+  const { error, loading, results } = state;
+  const {} = props;
+
+  if (loading || error) {
+    return loading ? '<Loader />' : '<Error />'
+  }
+
+  return (
+    <div className="{{pascalCase name}}">
+      {{pascalCase name}}
+    </div>
+  );
+};
+
+mapStateToProps = (state, ownProps) => {
+
+};
+
+mapDispatchToProps = (dispatch) => (bindActionCreators({
+
+}, dispatch));
+
+export default connect(mapStateToProps, mapDispatchToProps)({{pascalCase name}});
