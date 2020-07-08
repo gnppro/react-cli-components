@@ -211,6 +211,42 @@ module.exports = (plop) => {
         path: "src/store/modules/{{camelCase name}}/types.js",
         templateFile: "plop-templates/store/module/types.js.hbs",
       },
+      {
+        type: "add",
+        path: "src/store/rootReducer.js",
+        templateFile: "plop-templates/store/injectable-rootReducer.js.hbs",
+        skipIfExists: true,
+      },
+      {
+        type: "append",
+        path: "src/store/rootReducer.js",
+        pattern: `/* INJECT_IMPORT_REDUCER */`,
+        template: `import {{camelCase name}} from './modules/{{camelCase name}}';`,
+      },
+      {
+        type: "append",
+        path: "src/store/rootReducer.js",
+        pattern: `/* INJECT_REDUCER */`,
+        template: `\t{{camelCase name}},`,
+      },
+      {
+        type: "add",
+        path: "src/store/rootSaga.js",
+        templateFile: "plop-templates/store/injectable-rootSaga.js.hbs",
+        skipIfExists: true,
+      },
+      {
+        type: "append",
+        path: "src/store/rootSaga.js",
+        pattern: `/* INJECT_IMPORT_SAGA */`,
+        template: `import { sagas as {{camelCase name}}Sagas } from './modules/{{camelCase name}}';`,
+      },
+      {
+        type: "append",
+        path: "src/store/rootSaga.js",
+        pattern: `/* INJECT_SAGA */`,
+        template: `\t...{{camelCase name}}Sagas,`,
+      },
     ],
   });
 };
