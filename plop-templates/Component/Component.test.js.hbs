@@ -17,7 +17,7 @@ it('Should have single div', () => {
 });
 
 // (3) Checking class
-it('Should have the correct class name', ()=> {
-  const component = shallow(<{{pascalCase name}} className="{{pascalCase name}}"/>);
+it('Should have the correct class name', () => {
+  const component = shallow(<{{pascalCase name}} className="{{pascalCase name}}" />);
   expect(component.find('div').hasClass('{{pascalCase name}}')).toBe(true);
 });
