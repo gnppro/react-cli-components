@@ -1,0 +1,27 @@
+import { put, call, takeEvery } from 'redux-saga/effects';
+import { {{constantCase name}}_REQUEST } from './types';
+import { do{{pascalCase name}}Success, do{{pascalCase name}}Failure } from './actions';
+import { getData } from '../../../services/api/functions';
+import endpoints from '../../../services/api/endpoints';
+
+const client{{pascalCase name}}Read = (id) => getData(`${endpoints.{{camelCase name}}}/${id}`);
+
+export function* get{{pascalCase name}}({ payload }) {
+  try {
+    const response = yield call(client{{pascalCase name}}Read, payload);
+    yield put(do{{pascalCase name}}Success(response));
+  } catch (error) {
+    console.log('function*get{{pascalCase name}} -> error', error);
+    if (error.message) {
+      yield put(do{{pascalCase name}}Failure(error.message));
+    } else {
+      yield put(do{{pascalCase name}}Failure(error));
+    }
+  }
+}
+
+export function* watchGet{{pascalCase name}}Async() {
+  yield takeEvery({{constantCase name}}_REQUEST, get{{pascalCase name}});
+}
+
+export const sagas = [watchGet{{pascalCase name}}Async];

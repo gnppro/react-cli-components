@@ -1,0 +1,8 @@
+import { action } from '../common';
+import { {{constantCase name}}_REQUEST, {{constantCase name}}_SUCCESS, {{constantCase name}}_FAILURE } from './types';
+
+export const do{{pascalCase name}}Request = (payload) => action({{constantCase name}}_REQUEST, payload);
+
+export const do{{pascalCase name}}Success = (payload) => action({{constantCase name}}_SUCCESS, payload);
+
+export const do{{pascalCase name}}Failure = (payload) => action({{constantCase name}}_FAILURE, payload);
