@@ -1,8 +1,18 @@
 import { action } from '../common';
-import { {{constantCase name}}_REQUEST, {{constantCase name}}_SUCCESS, {{constantCase name}}_FAILURE } from './types';
+import {
+  {{constantCase name}}_REQUEST,
+  {{constantCase name}}_SUCCESS,
+  {{constantCase name}}_FAILURE,
+  {{constantCase name}}_ERROR_CLEANUP,
+  {{constantCase name}}_RESET,
+} from './types';
 
 export const do{{pascalCase name}}Request = (payload) => action({{constantCase name}}_REQUEST, payload);
 
 export const do{{pascalCase name}}Success = (payload) => action({{constantCase name}}_SUCCESS, payload);
 
 export const do{{pascalCase name}}Failure = (payload) => action({{constantCase name}}_FAILURE, payload);
+
+export const do{{pascalCase name}}ErrorCleanup = (payload) => action({{constantCase name}}_ERROR_CLEANUP, payload);
+
+export const do{{pascalCase name}}Reset = (payload) => action({{constantCase name}}_RESET, payload);

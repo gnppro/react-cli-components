@@ -11,12 +11,7 @@ export function* get{{pascalCase name}}({ payload }) {
     const response = yield call(client{{pascalCase name}}Read, payload);
     yield put(do{{pascalCase name}}Success(response));
   } catch (error) {
-    console.log('function*get{{pascalCase name}} -> error', error);
-    if (error.message) {
-      yield put(do{{pascalCase name}}Failure(error.message));
-    } else {
-      yield put(do{{pascalCase name}}Failure(error));
-    }
+    yield put(do{{pascalCase name}}Failure(error));
   }
 }
 
