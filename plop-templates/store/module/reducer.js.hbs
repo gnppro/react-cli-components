@@ -6,12 +6,12 @@ import {
   {{constantCase name}}_RESET,
 } from './types';
 
-let initialState = {
-  body: [],
-  loading: false,
-  error: false,
-  errors: {},
-  message: '',
+const initialState = {
+  data: [],
+  error: null,
+  status: 'idle',
+  statusText: '',
+  statusCode: null,
 };
 
 export default function (state = initialState, action) {
@@ -19,28 +19,29 @@ export default function (state = initialState, action) {
     case {{constantCase name}}_REQUEST:
       return {
         ...state,
-        loading: true,
+        status: 'loading',
       };
     case {{constantCase name}}_SUCCESS:
       return {
         ...state,
-        body: action.payload.data,
-        loading: false,
+        status: 'success',
+        data: action.payload.data,
+        statusCode: action.payload.status,
       };
     case {{constantCase name}}_FAILURE:
       return {
         ...state,
-        loading: false,
-        error: true,
-        errors: action.payload,
-        message: action.payload.message,
+        status: 'failure',
+        error: action.payload,
+        statusText: action.payload.statusText,
+        statusCode: action.payload.status,
       };
     case {{constantCase name}}_ERROR_CLEANUP:
       return {
         ...state,
-        error: false,
-        errors: {},
-        message: '',
+        error: null,
+        statusText: '',
+        statusCode: null,
       };
     case {{constantCase name}}_RESET:
       return initialState;
