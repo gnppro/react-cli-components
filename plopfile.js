@@ -176,8 +176,8 @@ module.exports = (plop) => {
     ],
   });
 
-  plop.setGenerator("store", {
-    description: "Create a reusable redux module",
+  plop.setGenerator("store-sagas", {
+    description: "Create a reusable redux module with sagas",
     prompts: [
       {
         type: "input",
@@ -189,27 +189,27 @@ module.exports = (plop) => {
       {
         type: "add",
         path: "src/store/modules/{{camelCase name}}/actions.js",
-        templateFile: "plop-templates/store/modules/actions.js.hbs",
+        templateFile: "plop-templates/store/modulesWithSagas/actions.js.hbs",
       },
       {
         type: "add",
         path: "src/store/modules/{{camelCase name}}/index.js",
-        templateFile: "plop-templates/store/modules/index.js.hbs",
+        templateFile: "plop-templates/store/modulesWithSagas/index.js.hbs",
       },
       {
         type: "add",
         path: "src/store/modules/{{camelCase name}}/reducer.js",
-        templateFile: "plop-templates/store/modules/reducer.js.hbs",
+        templateFile: "plop-templates/store/modulesWithSagas/reducer.js.hbs",
       },
       {
         type: "add",
         path: "src/store/modules/{{camelCase name}}/sagas.js",
-        templateFile: "plop-templates/store/modules/sagas.js.hbs",
+        templateFile: "plop-templates/store/modulesWithSagas/sagas.js.hbs",
       },
       {
         type: "add",
         path: "src/store/modules/{{camelCase name}}/types.js",
-        templateFile: "plop-templates/store/modules/types.js.hbs",
+        templateFile: "plop-templates/store/modulesWithSagas/types.js.hbs",
       },
       {
         type: "add",
@@ -246,6 +246,62 @@ module.exports = (plop) => {
         path: "src/store/rootSaga.js",
         pattern: `/* INJECT_SAGA */`,
         template: `\t...{{camelCase name}}Sagas,`,
+      },
+    ],
+  });
+
+  plop.setGenerator("store-thunk", {
+    description: "Create a reusable redux module with thunk",
+    prompts: [
+      {
+        type: "input",
+        name: "name",
+        message: "What is your redux module name?",
+      },
+    ],
+    actions: [
+      {
+        type: "add",
+        path: "src/store/modules/{{camelCase name}}/actions.js",
+        templateFile: "plop-templates/store/modulesWithThunk/actions.js.hbs",
+      },
+      {
+        type: "add",
+        path: "src/store/modules/{{camelCase name}}/index.js",
+        templateFile: "plop-templates/store/modulesWithThunk/index.js.hbs",
+      },
+      {
+        type: "add",
+        path: "src/store/modules/{{camelCase name}}/reducer.js",
+        templateFile: "plop-templates/store/modulesWithThunk/reducer.js.hbs",
+      },
+      {
+        type: "add",
+        path: "src/store/modules/{{camelCase name}}/operations.js",
+        templateFile: "plop-templates/store/modulesWithThunk/operations.js.hbs",
+      },
+      {
+        type: "add",
+        path: "src/store/modules/{{camelCase name}}/types.js",
+        templateFile: "plop-templates/store/modulesWithThunk/types.js.hbs",
+      },
+      {
+        type: "add",
+        path: "src/store/rootReducer.js",
+        templateFile: "plop-templates/store/injectable-rootReducer.js.hbs",
+        skipIfExists: true,
+      },
+      {
+        type: "append",
+        path: "src/store/rootReducer.js",
+        pattern: `/* INJECT_IMPORT_REDUCER */`,
+        template: `import {{camelCase name}} from './modules/{{camelCase name}}';`,
+      },
+      {
+        type: "append",
+        path: "src/store/rootReducer.js",
+        pattern: `/* INJECT_REDUCER */`,
+        template: `\t{{camelCase name}},`,
       },
     ],
   });

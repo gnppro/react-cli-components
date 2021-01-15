@@ -1,0 +1,47 @@
+import types from './types';
+
+const {
+  {{constantCase name}}_REQUEST,
+  {{constantCase name}}_SUCCESS,
+  {{constantCase name}}_FAILURE,
+  {{constantCase name}}_RESET,
+} = types;
+
+const INITIAL_STATE = {
+  data: [],
+  error: null,
+  status: 'idle',
+  statusText: '',
+  statusCode: null,
+};
+
+export default function (state = INITIAL_STATE, action) {
+  const { type, payload } = action;
+
+  switch (type) {
+    case {{constantCase name}}_REQUEST:
+      return {
+        ...state,
+        status: 'loading',
+      };
+    case {{constantCase name}}_SUCCESS:
+      return {
+        ...state,
+        status: 'success',
+        data: payload.data,
+        statusCode: payload.status,
+      };
+    case {{constantCase name}}_FAILURE:
+      return {
+        ...state,
+        status: 'failure',
+        error: payload,
+        statusText: payload.statusText,
+        statusCode: payload.status,
+      };
+    case {{constantCase name}}_RESET:
+      return INITIAL_STATE;
+    default:
+      return state;
+  }
+}

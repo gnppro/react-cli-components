@@ -1,0 +1,14 @@
+import action from '../common/action';
+import types from './types';
+
+const {
+  {{constantCase name}}_REQUEST,
+  {{constantCase name}}_SUCCESS,
+  {{constantCase name}}_FAILURE,
+  {{constantCase name}}_RESET,
+} = types;
+
+const do{{pascalCase name}}Request = (payload) => action({{constantCase name}}_REQUEST, payload);
+const do{{pascalCase name}}Success = (payload) => action({{constantCase name}}_SUCCESS, payload);
+const do{{pascalCase name}}Failure = (payload) => action({{constantCase name}}_FAILURE, payload);
+const do{{pascalCase name}}Reset = (payload) => action({{constantCase name}}_RESET, payload);

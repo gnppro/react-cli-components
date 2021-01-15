@@ -1,0 +1,25 @@
+import actions from './actions';
+import { getData } from '../../../services/api/functions';
+import endpoints from '../../../services/api/endpoints';
+
+const {
+  do{{pascalCase name}}Request,
+  do{{pascalCase name}}Success,
+  do{{pascalCase name}}Failure,
+} = actions;
+
+const fetch{{pascalCase name}} = (params) => getData(endpoints.{{camelCase name}}, params);
+
+const get{{pascalCase name}} = (params) => async (dispatch) => {
+  dispatch(do{{pascalCase name}}Request());
+  try {
+    const response = await fetch{{pascalCase name}}(params);
+    dispatch(do{{pascalCase name}}Success(response));
+  } catch (error) {
+    dispatch(do{{pascalCase name}}Failure(error));
+  }
+}
+
+export default {
+  get{{pascalCase name}}
+}
