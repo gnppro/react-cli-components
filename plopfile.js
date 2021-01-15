@@ -189,27 +189,27 @@ module.exports = (plop) => {
       {
         type: "add",
         path: "src/store/modules/{{camelCase name}}/actions.js",
-        templateFile: "plop-templates/store/module/actions.js.hbs",
+        templateFile: "plop-templates/store/modules/actions.js.hbs",
       },
       {
         type: "add",
         path: "src/store/modules/{{camelCase name}}/index.js",
-        templateFile: "plop-templates/store/module/index.js.hbs",
+        templateFile: "plop-templates/store/modules/index.js.hbs",
       },
       {
         type: "add",
         path: "src/store/modules/{{camelCase name}}/reducer.js",
-        templateFile: "plop-templates/store/module/reducer.js.hbs",
+        templateFile: "plop-templates/store/modules/reducer.js.hbs",
       },
       {
         type: "add",
         path: "src/store/modules/{{camelCase name}}/sagas.js",
-        templateFile: "plop-templates/store/module/sagas.js.hbs",
+        templateFile: "plop-templates/store/modules/sagas.js.hbs",
       },
       {
         type: "add",
         path: "src/store/modules/{{camelCase name}}/types.js",
-        templateFile: "plop-templates/store/module/types.js.hbs",
+        templateFile: "plop-templates/store/modules/types.js.hbs",
       },
       {
         type: "add",
