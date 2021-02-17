@@ -1,4 +1,4 @@
-import action from '../common/action';
+import { standardAction, errorAction } from '../common/actions';
 import types from './types';
 
 const {
@@ -8,7 +8,14 @@ const {
   {{constantCase name}}_RESET,
 } = types;
 
-const do{{pascalCase name}}Request = (payload) => action({{constantCase name}}_REQUEST, payload);
-const do{{pascalCase name}}Success = (payload) => action({{constantCase name}}_SUCCESS, payload);
-const do{{pascalCase name}}Failure = (payload) => action({{constantCase name}}_FAILURE, payload);
-const do{{pascalCase name}}Reset = (payload) => action({{constantCase name}}_RESET, payload);
+const do{{pascalCase name}}Request = (payload) => standardAction({{constantCase name}}_REQUEST, payload);
+const do{{pascalCase name}}Success = (payload) => standardAction({{constantCase name}}_SUCCESS, payload);
+const do{{pascalCase name}}Failure = (payload) => errorAction({{constantCase name}}_FAILURE, payload);
+const do{{pascalCase name}}Reset = (payload) => standardAction({{constantCase name}}_RESET, payload);
+
+export default {
+  do{{pascalCase name}}Request,
+  do{{pascalCase name}}Success,
+  do{{pascalCase name}}Failure,
+  do{{pascalCase name}}Reset,
+};

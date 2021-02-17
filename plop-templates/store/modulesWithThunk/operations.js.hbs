@@ -8,18 +8,18 @@ const {
   do{{pascalCase name}}Failure,
 } = actions;
 
-const fetch{{pascalCase name}} = (params) => getData(endpoints.{{camelCase name}}, params);
+const get{{pascalCase name}} = (params) => getData(endpoints.{{camelCase name}}, params);
 
-const get{{pascalCase name}} = (params) => async (dispatch) => {
+const fetch{{pascalCase name}} = (params) => async (dispatch) => {
   dispatch(do{{pascalCase name}}Request());
   try {
-    const response = await fetch{{pascalCase name}}(params);
+    const response = await get{{pascalCase name}}(params);
     dispatch(do{{pascalCase name}}Success(response));
   } catch (error) {
     dispatch(do{{pascalCase name}}Failure(error));
   }
-}
+};
 
 export default {
-  get{{pascalCase name}}
-}
+  fetch{{pascalCase name}},
+};
